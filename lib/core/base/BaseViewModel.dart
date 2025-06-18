@@ -1,15 +1,16 @@
 // Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
-class BaseViewModel<State> extends ChangeNotifier {
-  State _state;
+class BaseViewModel<TState> extends ChangeNotifier {
+  TState _state;
 
   BaseViewModel(this._state);
 
-  State get state => _state;
+  TState get state => _state;
 
-  void emit(State newState) {
+  void emit(TState newState) {
     // Swift의 Thread.isMainThread 체크를 Dart로 변환
     if (kIsWeb || _isMainThread()) {
       _state = newState;

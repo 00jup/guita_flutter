@@ -1,7 +1,7 @@
 // Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
 
 import 'package:flutter/material.dart';
-import '../../presentations/router/Router.dart';
+import 'package:guita_flutter/presentations/router/Router.dart';
 
 class BasePreview extends StatelessWidget {
   final Widget child;
