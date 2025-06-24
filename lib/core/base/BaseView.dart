@@ -1,14 +1,8 @@
-// Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
+import 'package:provider/provider.dart';
 
-import 'package:flutter/material.dart';
-import 'package:guita_flutter/core/base/BaseViewModel.dart';
-import 'package:guita_flutter/presentations/theme/components/shapes/Layout.dart';
-
-typedef Builder<Content extends Widget, TState, ViewModel extends BaseViewModel<TState>> 
-    = Content Function(ViewModel viewModel, TState state);
 
 class BaseView<Content extends Widget, TState, ViewModel extends BaseViewModel<TState>> 
-    extends StatefulWidget {
+    extends StatelessWidget {
   final ViewModel Function() create;
   final Builder<Content, TState, ViewModel> builder;
   final bool navigationBarHidden;
@@ -23,35 +17,16 @@ class BaseView<Content extends Widget, TState, ViewModel extends BaseViewModel<T
   });
 
   @override
-  createState() => _BaseViewState<Content, TState, ViewModel>();
-}
-
-class _BaseViewState<Content extends Widget, TState, ViewModel extends BaseViewModel<TState>> 
-    extends State<BaseView<Content, TState, ViewModel>> {
-  late ViewModel viewModel;
-
-  @override
-  void initState() {
-    super.initState();
-    viewModel = widget.create();
-    viewModel.addListener(_onStateChanged);
-  }
-
-  void _onStateChanged() {
-    setState(() {});
-  }
-
-  @override
-  void dispose() {
-    viewModel.removeListener(_onStateChanged);
-    viewModel.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: widget.builder(viewModel, viewModel.state),
+    return ChangeNotifierProvider<ViewModel>(
+      create: (_) => create(),
+      child: Consumer<ViewModel>(
+        builder: (context, viewModel, child) {
+          return Layout(
+            child: builder(viewModel, viewModel.state),
+          );
+        },
+      ),
     );
   }
 }
