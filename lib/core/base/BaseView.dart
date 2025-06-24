@@ -3,13 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:guita_flutter/presentations/theme/components/shapes/Layout.dart';
 import 'package:guita_flutter/core/base/BaseViewModel.dart';
 
-typedef Builder<Content extends Widget, TState, ViewModel extends BaseViewModel<TState>> 
-    = Content Function(ViewModel viewModel, TState state);
+typedef Builder<TState, ViewModel extends BaseViewModel<TState>> 
+    = Widget Function(ViewModel viewModel, TState state);
 
-class BaseView<Content extends Widget, TState, ViewModel extends BaseViewModel<TState>> 
+class BaseView<TState, ViewModel extends BaseViewModel<TState>> 
     extends StatelessWidget {
   final ViewModel Function() create;
-  final Builder<Content, TState, ViewModel> builder;
+  final Builder<TState, ViewModel> builder;
   final bool navigationBarHidden;
   final bool navigationBarBackButtonHidden;
 

@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseView<Widget, HomeViewState, HomeViewModel>(
+    return BaseView<HomeViewState, HomeViewModel>(
       create: () => HomeViewModel(),
       builder: (viewModel, state) {
         return Center(

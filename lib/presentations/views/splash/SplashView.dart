@@ -12,7 +12,7 @@ class SplashView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseView<Widget, SplashViewState, SplashViewModel>(
+    return BaseView<SplashViewState, SplashViewModel>(
       create: () => SplashViewModel(),
       builder: (viewModel, state) {
         return Center(
