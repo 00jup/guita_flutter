@@ -1,5 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:guita_flutter/presentations/theme/components/shapes/Layout.dart';
+import 'package:guita_flutter/core/base/BaseViewModel.dart';
 
+typedef Builder<Content extends Widget, TState, ViewModel extends BaseViewModel<TState>> 
+    = Content Function(ViewModel viewModel, TState state);
 
 class BaseView<Content extends Widget, TState, ViewModel extends BaseViewModel<TState>> 
     extends StatelessWidget {
