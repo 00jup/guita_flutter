@@ -4,26 +4,32 @@ import 'dart:async';
 
 /// 비동기 함수 배열을 취소 가능하도록 만드는 클래스
 /// Swift의 Task 기반 비동기 함수 실행을 Dart로 변환
-class BaseLesson {
+
+class CancelToken {
   bool _isCancelled = false;
+  bool get isCancelled => _isCancelled;
+  void cancel() => _isCancelled = true;
+}
+
+class BaseLesson {
+  CancelToken? _cancelToken;
 
   void onLessonCancel(Object error) {}
 
-  Future<void> startLesson(List<Future<void> Function()> jobs) async {
+    Future<void> startLesson(List<Future<void> Function(CancelToken)> jobs) async {
     try {
-      await Future.delayed(const Duration(milliseconds: 100));
+      _cancelToken = CancelToken();
       
       for (final job in jobs) {
-        if (_isCancelled) throw Exception('Cancelled');
-        await job();
+        if (_cancelToken!.isCancelled) throw Exception('Cancelled');
+        await job(_cancelToken!);
       }
     } catch (error) {
-      // Canceled
       onLessonCancel(error);
     }
   }
 
   void cancel() {
-    _isCancelled = true;
+    _cancelToken?.cancel();
   }
 }
