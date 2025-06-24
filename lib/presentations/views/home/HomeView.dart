@@ -1,6 +1,11 @@
 // Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:guita_flutter/presentations/router/Router.dart';
+import 'package:guita_flutter/presentations/router/RouterViewState.dart';
+
 import 'package:guita_flutter/core/base/BaseView.dart';
 import 'package:guita_flutter/presentations/views/home/HomeViewModel.dart';
 import 'package:guita_flutter/presentations/views/home/HomeViewState.dart';
@@ -8,8 +13,10 @@ import 'package:guita_flutter/presentations/views/home/HomeViewState.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+    final router = Provider.of<AppRouter>(context, listen: false);
     return BaseView<HomeViewState, HomeViewModel>(
       create: () => HomeViewModel(),
       builder: (viewModel, state) {
@@ -23,12 +30,12 @@ class HomeView extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               ElevatedButton(
-                onPressed: () => viewModel.navigateToLearning(context),
+                onPressed: () => router.push(SubPage.curriculum),
                 child: const Text('기타 학습'),
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () => viewModel.navigateToSettings(context),
+                onPressed: () => router.push(SubPage.setting),
                 child: const Text('설정'),
               ),
             ],

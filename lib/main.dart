@@ -1,8 +1,10 @@
 // Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
 
 import 'package:flutter/material.dart';
-import 'package:guita_flutter/presentations/views/splash/SplashView.dart';
-import 'package:guita_flutter/presentations/views/home/HomeView.dart';
+import 'package:provider/provider.dart';
+import 'package:guita_flutter/presentations/router/Router.dart';
+import 'package:guita_flutter/presentations/router/RouterView.dart';
+import 'package:guita_flutter/presentations/theme/fonts/FontKoddi.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,17 +15,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Guita',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
+    return ChangeNotifierProvider<AppRouter>(
+      create: (_) => AppRouter(),
+      child: MaterialApp(
+        title: 'Guita',
+        theme: _buildTheme(),
+        home: const RouterView(),
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashView(),
-        '/home': (context) => const HomeView(),
-      },
+    );
+  }
+
+  ThemeData _buildTheme() {
+    return ThemeData(
+      primarySwatch: Colors.blue,
+      useMaterial3: true,
+      textTheme: const TextTheme(
+        bodyMedium: TextStyle(
+          fontFamily: 'KoddiUDOnGothic-Regular',
+          fontSize: 16,
+        ),
+      ),
     );
   }
 }

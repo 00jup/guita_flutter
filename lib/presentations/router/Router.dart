@@ -1,54 +1,47 @@
 // Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
 
+import 'package:flutter/material.dart';
 import 'package:guita_flutter/core/base/BaseViewModel.dart';
+import 'package:guita_flutter/presentations/router/RouterViewState.dart';
 
-enum RootPage {
-  splash,
-  home,
-}
+class AppRouter extends BaseViewModel<RouterViewState> {
+  AppRouter()
+      : super(const RouterViewState(
+          rootPage: RootPage.splash,
+          subPages: [],
+        ));
 
-class RouterViewState {
-  final RootPage rootPage;
-  final List<String> subPages;
-
-  RouterViewState({
-    required this.rootPage,
-    required this.subPages,
-  });
-
-  RouterViewState copy({
-    RootPage? rootPage,
-    List<String>? subPages,
-  }) {
-    return RouterViewState(
-      rootPage: rootPage ?? this.rootPage,
-      subPages: subPages ?? this.subPages,
-    );
+  String get previousTitle {
+    if (state.subPages.length > 1) {
+      return state.subPages[state.subPages.length - 2].title;
+    }
+    return state.rootPage.title;
   }
-}
-
-class Router extends BaseViewModel<RouterViewState> {
-  Router() : super(RouterViewState(
-    rootPage: RootPage.splash,
-    subPages: [],
-  ));
 
   void setRoot(RootPage rootPage) {
-    emit(state.copy(
+    emit(state.copyWith(
       rootPage: rootPage,
       subPages: [],
     ));
   }
 
-  void push(String page) {
-    final newSubPages = List<String>.from(state.subPages)..add(page);
-    emit(state.copy(subPages: newSubPages));
+  void setSubPages(List<SubPage> subPages) {
+    emit(state.copyWith(subPages: subPages));
+  }
+
+  void push(SubPage subPage) {
+    if (state.subPages.isNotEmpty && state.subPages.last == subPage) {
+      return;
+    }
+    
+    final newSubPages = [...state.subPages, subPage];
+    emit(state.copyWith(subPages: newSubPages));
   }
 
   void pop() {
-    if (state.subPages.isNotEmpty) {
-      final newSubPages = List<String>.from(state.subPages)..removeLast();
-      emit(state.copy(subPages: newSubPages));
-    }
+    if (state.subPages.isEmpty) return;
+    
+    final newSubPages = state.subPages.sublist(0, state.subPages.length - 1);
+    emit(state.copyWith(subPages: newSubPages));
   }
 }

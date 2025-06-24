@@ -17,11 +17,6 @@ class SplashViewModel extends BaseViewModel<SplashViewState> {
     });
   }
 
-  void navigateToHome(BuildContext context) {
-    // 간단한 네비게이션 (실제로는 Router를 사용해야 함)
-    Navigator.pushReplacementNamed(context, '/home');
-  }
-
   void onLoaded() {
     emit(state.copy(loaded: true));
   }
