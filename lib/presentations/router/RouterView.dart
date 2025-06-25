@@ -28,9 +28,11 @@ class RouterView extends StatelessWidget {
   }
 
   Widget _buildCurrentPage(RouterViewState state) {
+    
     if (state.subPages.isNotEmpty) {
       return _buildSubPage(state.subPages.last);
     }
+    
     return _buildRootPage(state.rootPage);
   }
 

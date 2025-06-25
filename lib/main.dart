@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<AppRouter>(
       create: (_) => AppRouter(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Guita',
         theme: _buildDarkTheme(),
         themeMode: ThemeMode.dark,
