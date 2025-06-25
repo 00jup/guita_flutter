@@ -21,3 +21,22 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/audio/
+    - assets/images/
+
+  fonts:
+    - family: KoddiUDOnGothic-Regular
+      fonts:
+        - asset: assets/fonts/KoddiUDOnGothic-Regular.ttf
+        
+    - family: KoddiUDOnGothic-Bold
+      fonts:
+        - asset: assets/fonts/KoddiUDOnGothic-Bold.ttf
+          weight: 700
+
+    - family: KoddiUDOnGothic-ExtraBold
+      fonts:
+        - asset: assets/fonts/KoddiUDOnGothic-ExtraBold.ttf
+          weight: 800

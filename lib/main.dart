@@ -19,22 +19,23 @@ class MyApp extends StatelessWidget {
       create: (_) => AppRouter(),
       child: MaterialApp(
         title: 'Guita',
-        theme: _buildTheme(),
+        theme: _buildDarkTheme(),
+        themeMode: ThemeMode.dark,
         home: const RouterView(),
       ),
     );
   }
 
-  ThemeData _buildTheme() {
-    return ThemeData(
-      primarySwatch: Colors.blue,
-      useMaterial3: true,
-      textTheme: const TextTheme(
-        bodyMedium: TextStyle(
-          fontFamily: 'KoddiUDOnGothic-Regular',
-          fontSize: 16,
-        ),
-      ),
+    ThemeData _buildDarkTheme() {
+    final baseTheme = ThemeData.dark();
+    return baseTheme.copyWith(
+      // scaffoldBackgroundColor: AppColors.dark,
+      textTheme: FontKoddi.applyToTextTheme(baseTheme.textTheme),
+      // colorScheme: ColorScheme.dark(
+      //   primary: AppColors.accent,
+      //   surface: AppColors.dark,
+      //   onSurface: AppColors.light,
+      // ),
     );
   }
 }
