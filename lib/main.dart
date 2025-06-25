@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:guita_flutter/presentations/router/Router.dart';
 import 'package:guita_flutter/presentations/router/RouterView.dart';
 import 'package:guita_flutter/presentations/theme/fonts/FontKoddi.dart';
+
+import 'package:guita_flutter/presentations/theme/AppColors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,13 +32,13 @@ class MyApp extends StatelessWidget {
     ThemeData _buildDarkTheme() {
     final baseTheme = ThemeData.dark();
     return baseTheme.copyWith(
-      // scaffoldBackgroundColor: AppColors.dark,
+      scaffoldBackgroundColor: GuitaColor.dark,
       textTheme: FontKoddi.applyToTextTheme(baseTheme.textTheme),
-      // colorScheme: ColorScheme.dark(
-      //   primary: AppColors.accent,
-      //   surface: AppColors.dark,
-      //   onSurface: AppColors.light,
-      // ),
+      colorScheme: ColorScheme.dark(
+        primary: GuitaColor.accent,
+        surface: GuitaColor.dark,
+        onSurface: GuitaColor.light,
+      ),
     );
   }
 }
