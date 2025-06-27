@@ -19,20 +19,17 @@ class RouterView extends StatelessWidget {
       builder: (context, router, child) {
         return NavigationController(
           router: router,
-          child: Layout(
-            child: _buildCurrentPage(router.state),
-          ),
+          child: Layout(child: _buildCurrentPage(router.state)),
         );
       },
     );
   }
 
   Widget _buildCurrentPage(RouterViewState state) {
-    
     if (state.subPages.isNotEmpty) {
       return _buildSubPage(state.subPages.last);
     }
-    
+
     return _buildRootPage(state.rootPage);
   }
 
@@ -107,10 +104,7 @@ class NavigationController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: _handleBackButton,
-      child: child,
-    );
+    return WillPopScope(onWillPop: _handleBackButton, child: child);
   }
 
   Future<bool> _handleBackButton() async {

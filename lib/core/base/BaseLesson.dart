@@ -16,10 +16,12 @@ class BaseLesson {
 
   void onLessonCancel(Object error) {}
 
-    Future<void> startLesson(List<Future<void> Function(CancelToken)> jobs) async {
+  Future<void> startLesson(
+    List<Future<void> Function(CancelToken)> jobs,
+  ) async {
     try {
       _cancelToken = CancelToken();
-      
+
       for (final job in jobs) {
         if (_cancelToken!.isCancelled) throw Exception('Cancelled');
         await job(_cancelToken!);

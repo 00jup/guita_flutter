@@ -10,9 +10,10 @@ import 'package:guita_flutter/core/base/BaseView.dart';
 import 'package:guita_flutter/presentations/views/home/HomeViewModel.dart';
 import 'package:guita_flutter/presentations/views/home/HomeViewState.dart';
 
+import 'package:guita_flutter/presentations/theme/AppColors.dart';
+
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -24,26 +25,37 @@ class HomeView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                'assets/images/pick.png',
-                width: 47,
-                height: 54,
-              ),
-              const SizedBox(height: 43),
               const Text(
                 'Guita',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
+              Image.asset('assets/images/pick.png', width: 47, height: 54),
+              const SizedBox(height: 43),
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () => router.push(SubPage.curriculum),
-                child: const Text('기타 학습'),
+                child: Text(
+                  '기타 학습',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: GuitaColor.light,
+                  ),
+                ),
               ),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () => router.push(SubPage.setting),
-                child: const Text('설정'),
+                child: Text(
+                  '설정',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: GuitaColor.light,
+                  ),
+                ),
               ),
+              const SizedBox(height: 16),
             ],
           ),
         );

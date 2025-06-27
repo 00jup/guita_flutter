@@ -26,7 +26,7 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void _startTimer() {
-  Future.delayed(const Duration(milliseconds: 500), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       if (mounted) {
         final router = Provider.of<AppRouter>(context, listen: false);
         router.setRoot(RootPage.home);
@@ -42,9 +42,7 @@ class _SplashViewState extends State<SplashView> {
         return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const CircularProgressIndicator(),
-            ],
+            children: [const CircularProgressIndicator()],
           ),
         );
       },

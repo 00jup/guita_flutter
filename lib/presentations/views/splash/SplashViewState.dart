@@ -3,15 +3,9 @@
 class SplashViewState {
   final bool loaded;
 
-  SplashViewState({
-    required this.loaded,
-  });
+  SplashViewState({required this.loaded});
 
-  SplashViewState copy({
-    bool? loaded,
-  }) {
-    return SplashViewState(
-      loaded: loaded ?? this.loaded,
-    );
+  SplashViewState copy({bool? loaded}) {
+    return SplashViewState(loaded: loaded ?? this.loaded);
   }
 }

@@ -86,15 +86,9 @@ class RouterViewState {
   final RootPage rootPage;
   final List<SubPage> subPages;
 
-  const RouterViewState({
-    required this.rootPage,
-    required this.subPages,
-  });
+  const RouterViewState({required this.rootPage, required this.subPages});
 
-  RouterViewState copyWith({
-    RootPage? rootPage,
-    List<SubPage>? subPages,
-  }) {
+  RouterViewState copyWith({RootPage? rootPage, List<SubPage>? subPages}) {
     return RouterViewState(
       rootPage: rootPage ?? this.rootPage,
       subPages: subPages ?? this.subPages,

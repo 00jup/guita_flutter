@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:guita_flutter/presentations/theme/components/shapes/Layout.dart';
 import 'package:guita_flutter/core/base/BaseViewModel.dart';
 
-typedef Builder<TState, ViewModel extends BaseViewModel<TState>> 
-    = Widget Function(ViewModel viewModel, TState state);
+typedef Builder<TState, ViewModel extends BaseViewModel<TState>> =
+    Widget Function(ViewModel viewModel, TState state);
 
-class BaseView<TState, ViewModel extends BaseViewModel<TState>> 
+class BaseView<TState, ViewModel extends BaseViewModel<TState>>
     extends StatelessWidget {
   final ViewModel Function() create;
   final Builder<TState, ViewModel> builder;
@@ -27,9 +27,7 @@ class BaseView<TState, ViewModel extends BaseViewModel<TState>>
       create: (_) => create(),
       child: Consumer<ViewModel>(
         builder: (context, viewModel, child) {
-          return Layout(
-            child: builder(viewModel, viewModel.state),
-          );
+          return Layout(child: builder(viewModel, viewModel.state));
         },
       ),
     );

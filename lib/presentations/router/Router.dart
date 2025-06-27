@@ -6,10 +6,7 @@ import 'package:guita_flutter/presentations/router/RouterViewState.dart';
 
 class AppRouter extends BaseViewModel<RouterViewState> {
   AppRouter()
-      : super(const RouterViewState(
-          rootPage: RootPage.splash,
-          subPages: [],
-        ));
+    : super(const RouterViewState(rootPage: RootPage.splash, subPages: []));
 
   String get previousTitle {
     if (state.subPages.length > 1) {
@@ -19,10 +16,7 @@ class AppRouter extends BaseViewModel<RouterViewState> {
   }
 
   void setRoot(RootPage rootPage) {
-    emit(state.copyWith(
-      rootPage: rootPage,
-      subPages: [],
-    ));
+    emit(state.copyWith(rootPage: rootPage, subPages: []));
   }
 
   void setSubPages(List<SubPage> subPages) {
@@ -33,14 +27,14 @@ class AppRouter extends BaseViewModel<RouterViewState> {
     if (state.subPages.isNotEmpty && state.subPages.last == subPage) {
       return;
     }
-    
+
     final newSubPages = [...state.subPages, subPage];
     emit(state.copyWith(subPages: newSubPages));
   }
 
   void pop() {
     if (state.subPages.isEmpty) return;
-    
+
     final newSubPages = state.subPages.sublist(0, state.subPages.length - 1);
     emit(state.copyWith(subPages: newSubPages));
   }

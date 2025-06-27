@@ -9,15 +9,15 @@ class HomeViewModel extends BaseViewModel<HomeViewState> {
 
   void navigateToLearning(BuildContext context) {
     // 추후 Router 사용
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('기타 학습 화면으로 이동')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('기타 학습 화면으로 이동')));
   }
 
   void navigateToSettings(BuildContext context) {
     // 추후 Router 사용
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('설정 화면으로 이동')),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text('설정 화면으로 이동')));
   }
 }

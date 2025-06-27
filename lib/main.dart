@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
-    ThemeData _buildDarkTheme() {
+  ThemeData _buildDarkTheme() {
     final baseTheme = ThemeData.dark();
     return baseTheme.copyWith(
       scaffoldBackgroundColor: GuitaColor.dark,

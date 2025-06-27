@@ -4,10 +4,7 @@ import 'package:logger/logger.dart';
 
 class AppLogger {
   static final Logger _logger = Logger(
-    printer: PrettyPrinter(
-      methodCount: 1,
-      printEmojis: true,
-    ),
+    printer: PrettyPrinter(methodCount: 1, printEmojis: true),
   );
 
   static void d(String message) {
@@ -29,7 +26,7 @@ class AppLogger {
 
 class Log {
   static void d(String message) => AppLogger.d(message);
-  static void e(String message, [Object? error, StackTrace? stackTrace]) => 
+  static void e(String message, [Object? error, StackTrace? stackTrace]) =>
       AppLogger.e(message, error, stackTrace);
   static void w(String message) => AppLogger.w(message);
   static void i(String message) => AppLogger.i(message);
