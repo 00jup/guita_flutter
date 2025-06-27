@@ -24,6 +24,12 @@ class HomeView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset(
+                'assets/images/pick.png',
+                width: 47,
+                height: 54,
+              ),
+              const SizedBox(height: 43),
               const Text(
                 'Guita',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),

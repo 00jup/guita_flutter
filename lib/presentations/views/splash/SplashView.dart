@@ -11,12 +11,31 @@ import 'package:guita_flutter/presentations/views/splash/SplashViewModel.dart';
 import 'package:guita_flutter/presentations/views/splash/SplashViewState.dart';
 import 'package:guita_flutter/presentations/views/home/HomeView.dart';
 
-class SplashView extends StatelessWidget {
+class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
   @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  void _startTimer() {
+  Future.delayed(const Duration(milliseconds: 500), () {
+      if (mounted) {
+        final router = Provider.of<AppRouter>(context, listen: false);
+        router.setRoot(RootPage.home);
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final router = Provider.of<AppRouter>(context, listen: false);
     return BaseView<SplashViewState, SplashViewModel>(
       create: () => SplashViewModel(),
       builder: (viewModel, state) {
@@ -25,16 +44,6 @@ class SplashView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const CircularProgressIndicator(),
-              const SizedBox(height: 20),
-              Text(
-                'Loading...',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              if (state.loaded) 
-                ElevatedButton(
-                  onPressed: () => router.setRoot(RootPage.home),
-                  child: const Text('Go to Home'),
-                ),
             ],
           ),
         );
