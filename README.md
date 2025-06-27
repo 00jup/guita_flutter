@@ -3,3 +3,10 @@
 
 ## References
 - [Team Notion](https://www.notion.so/jup/C3-1eeab240aa188028b6aac2bfe14cec72)
+
+## 🚀 개발 환경 설정
+```bash
+git clone <repository-url>
+cd guita_flutter
+make setup
+```

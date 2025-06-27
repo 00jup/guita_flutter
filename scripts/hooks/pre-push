@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "🎯 Running dart format before push..."
+
+dart format .
+
+if ! git diff --quiet; then
+    echo "❌ Files were formatted. Please add and commit the changes before pushing."
+    echo "📝 Changed files:"
+    git diff --name-only
+    exit 1
+fi
+
+echo "✅ All files are properly formatted."
+exit 0
