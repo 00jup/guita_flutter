@@ -9,7 +9,6 @@ import 'package:guita_flutter/presentations/router/RouterViewState.dart';
 import 'package:guita_flutter/core/base/BaseView.dart';
 import 'package:guita_flutter/presentations/views/splash/SplashViewModel.dart';
 import 'package:guita_flutter/presentations/views/splash/SplashViewState.dart';
-import 'package:guita_flutter/presentations/views/home/HomeView.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
