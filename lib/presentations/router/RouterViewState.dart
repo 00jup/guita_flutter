@@ -17,7 +17,35 @@ enum RootPage {
   }
 }
 
-enum SubPage {
+class SubPage {
+  final SubPageType type;
+  final Map<String, dynamic> parameters;
+
+  const SubPage(this.type, [this.parameters = const {}]);
+
+  String get title => type.title;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SubPage &&
+          runtimeType == other.runtimeType &&
+          type == other.type &&
+          _mapEquals(parameters, other.parameters);
+
+  @override
+  int get hashCode => Object.hash(type, parameters);
+
+  bool _mapEquals(Map<String, dynamic> a, Map<String, dynamic> b) {
+    if (a.length != b.length) return false;
+    for (final key in a.keys) {
+      if (!b.containsKey(key) || a[key] != b[key]) return false;
+    }
+    return true;
+  }
+}
+
+enum SubPageType {
   setting,
   curriculum,
   lesson,
@@ -40,43 +68,43 @@ enum SubPage {
 
   String get title {
     switch (this) {
-      case SubPage.setting:
+      case SubPageType.setting:
         return "설정";
-      case SubPage.curriculum:
+      case SubPageType.curriculum:
         return "학습 목록";
-      case SubPage.lesson:
+      case SubPageType.lesson:
         return "레슨";
-      case SubPage.chord:
+      case SubPageType.chord:
         return "코드 학습";
-      case SubPage.chordLesson:
+      case SubPageType.chordLesson:
         return "코드 레슨";
-      case SubPage.chordLessonGuide:
+      case SubPageType.chordLessonGuide:
         return "코드 학습 도움말";
-      case SubPage.techniqueLesson:
+      case SubPageType.techniqueLesson:
         return "주법 학습";
-      case SubPage.techniqueLessonGuide:
+      case SubPageType.techniqueLessonGuide:
         return "주법 학습 도움말";
-      case SubPage.sectionLesson:
+      case SubPageType.sectionLesson:
         return "곡 구간 학습";
-      case SubPage.sectionLessonGuide:
+      case SubPageType.sectionLessonGuide:
         return "곡 구간 학습 도움말";
-      case SubPage.fullLesson:
+      case SubPageType.fullLesson:
         return "곡 전체 학습";
-      case SubPage.fullLessonGuide:
+      case SubPageType.fullLessonGuide:
         return "곡 전체 학습 도움말";
-      case SubPage.dev:
+      case SubPageType.dev:
         return "개발";
-      case SubPage.devNoteClassification:
+      case SubPageType.devNoteClassification:
         return "노트 분류";
-      case SubPage.devCodeClassification:
+      case SubPageType.devCodeClassification:
         return "코드 분류";
-      case SubPage.devVoiceCommand:
+      case SubPageType.devVoiceCommand:
         return "음성 명령";
-      case SubPage.devConfig:
+      case SubPageType.devConfig:
         return "설정";
-      case SubPage.devPermission:
+      case SubPageType.devPermission:
         return "권한";
-      case SubPage.devTextToSpeech:
+      case SubPageType.devTextToSpeech:
         return "TTS";
     }
   }

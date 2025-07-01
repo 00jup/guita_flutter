@@ -7,10 +7,13 @@ import 'package:guita_flutter/presentations/router/Router.dart';
 import 'package:guita_flutter/presentations/router/RouterViewState.dart';
 
 import 'package:guita_flutter/presentations/theme/components/shapes/Layout.dart';
+
 import 'package:guita_flutter/presentations/views/splash/SplashView.dart';
 import 'package:guita_flutter/presentations/views/home/HomeView.dart';
-import 'package:guita_flutter/presentations/views/setting/SettingView.dart';
+
 import 'package:guita_flutter/presentations/views/curriculum/CurriculumView.dart';
+import 'package:guita_flutter/presentations/views/lesson/LessonView.dart';
+import 'package:guita_flutter/presentations/views/setting/SettingView.dart';
 
 class RouterView extends StatelessWidget {
   const RouterView({super.key});
@@ -50,8 +53,8 @@ class RouterView extends StatelessWidget {
         return const Placeholder(child: Text("Setting View"));
       case SubPage.curriculum:
         return const CurriculumView();
-      // case SubPage.lesson(songInfo: final songInfo):
-      // return LessonView(songInfo: songInfo);
+      case SubPage.lesson(songInfo: final songInfo):
+        return LessonView(songInfo: songInfo);
       default:
         return const Placeholder(child: Text("Coming Soon"));
       // case SubPage.setting:
