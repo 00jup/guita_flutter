@@ -9,8 +9,9 @@ import 'package:guita_flutter/presentations/router/RouterViewState.dart';
 import 'package:guita_flutter/core/base/BaseView.dart';
 import 'package:guita_flutter/presentations/views/home/HomeViewModel.dart';
 import 'package:guita_flutter/presentations/views/home/HomeViewState.dart';
-
 import 'package:guita_flutter/presentations/theme/AppColors.dart';
+
+import 'package:guita_flutter/presentations/theme/components/Toolbar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -23,39 +24,62 @@ class HomeView extends StatelessWidget {
       builder: (viewModel, state) {
         return Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Guita',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-              ),
-              Image.asset('assets/images/pick.png', width: 47, height: 54),
-              const SizedBox(height: 43),
-              const SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () => router.push(SubPage.curriculum),
-                child: Text(
-                  '기타 학습',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: GuitaColor.light,
+              Toolbar(
+                title: "Guita",
+                accessibilityHint: "귀로 치는 기타, 귀타가 시작되었습니다",
+                isPopButton: false,
+                trailing: () => GestureDetector(
+                  onLongPress: () => router.push(SubPage.dev),
+                  child: const Text(
+                    "Dev",
+                    style: TextStyle(color: Colors.transparent, fontSize: 1),
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () => router.push(SubPage.setting),
-                child: Text(
-                  '설정',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: GuitaColor.light,
+
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min, // 필요한 만큼만 공간 사용
+                    children: [
+                      Image.asset(
+                        'assets/images/pick.png',
+                        width: 47,
+                        height: 54,
+                      ),
+
+                      const SizedBox(height: 43),
+                      const SizedBox(height: 40),
+
+                      ElevatedButton(
+                        onPressed: () => router.push(SubPage.curriculum),
+                        child: Text(
+                          '기타 학습',
+                          style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: GuitaColor.light,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: () => router.push(SubPage.setting),
+                        child: Text(
+                          '설정',
+                          style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: GuitaColor.light,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
             ],
           ),
         );

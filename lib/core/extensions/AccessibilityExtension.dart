@@ -1,5 +1,4 @@
-// Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
-
+// guita_flutter/core/extensions/AccessibilityExtension.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
@@ -24,7 +23,7 @@ extension AccessibilityExtension on Widget {
     return Semantics(header: true, child: this);
   }
 
-  Widget accessibilityHidden(bool hidden) {
+  Widget accessibilityHidden([bool hidden = true]) {
     return Semantics(excludeSemantics: hidden, child: this);
   }
 
@@ -32,35 +31,35 @@ extension AccessibilityExtension on Widget {
     return Semantics(enabled: enabled, child: this);
   }
 
-  Widget accessibilitySelected(bool selected) {
-    return Semantics(selected: selected, child: this);
-  }
-
-  Widget accessibilityToggled(bool toggled) {
-    return Semantics(toggled: toggled, child: this);
+  Widget accessibilityToggle(bool value) {
+    return Semantics(toggled: value, child: this);
   }
 
   Widget accessibility({
     String? label,
     String? hint,
     String? value,
-    bool? button,
-    bool? header,
+    bool isButton = false,
+    bool isHeader = false,
     bool hidden = false,
-    bool? enabled,
+    bool enabled = true,
     bool? selected,
+    bool? toggled,
     VoidCallback? onTap,
+    VoidCallback? onLongPress,
   }) {
     return Semantics(
       label: label,
       hint: hint,
       value: value,
-      button: button ?? false,
-      header: header ?? false,
+      button: isButton,
+      header: isHeader,
       excludeSemantics: hidden,
-      enabled: enabled ?? true,
-      selected: selected ?? false,
+      enabled: enabled,
+      selected: selected,
+      toggled: toggled,
       onTap: onTap,
+      onLongPress: onLongPress,
       child: this,
     );
   }
