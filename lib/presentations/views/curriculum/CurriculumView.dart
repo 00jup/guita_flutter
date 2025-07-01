@@ -36,9 +36,7 @@ class CurriculumView extends StatelessWidget {
   }
 
   Widget _buildContent(CurriculumViewState state) {
-    return Expanded(
-      child: Column(children: [const Spacer(), _buildScrollableList(state)]),
-    );
+    return Expanded(child: Column(children: [_buildScrollableList(state)]));
   }
 
   Widget _buildScrollableList(CurriculumViewState state) {

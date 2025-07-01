@@ -48,53 +48,54 @@ class RouterView extends StatelessWidget {
   }
 
   Widget _buildSubPage(SubPage subPage) {
-    switch (subPage) {
-      case SubPage.setting:
-        return const Placeholder(child: Text("Setting View"));
-      case SubPage.curriculum:
-        return const CurriculumView();
-      case SubPage.lesson(songInfo: final songInfo):
-        return LessonView(songInfo: songInfo);
-      default:
-        return const Placeholder(child: Text("Coming Soon"));
-      // case SubPage.setting:
-      //   return const SettingView();
-      // case SubPage.curriculum:
-      //   return const CurriculumView();
-
-      // case SubPage.chord:
-      //   return const Placeholder(); // TODO: Implement ChordView
-      // case SubPage.chordLesson:
-      //   return const Placeholder(); // TODO: Implement ChordLessonView
-      // case SubPage.chordLessonGuide:
-      //   return const Placeholder(); // TODO: Implement ChordLessonGuideView
-      // case SubPage.techniqueLesson:
-      //   return const Placeholder(); // TODO: Implement TechniqueLessonView
-      // case SubPage.techniqueLessonGuide:
-      //   return const Placeholder(); // TODO: Implement TechniqueLessonGuideView
-      // case SubPage.sectionLesson:
-      //   return const Placeholder(); // TODO: Implement SectionLessonView
-      // case SubPage.sectionLessonGuide:
-      //   return const Placeholder(); // TODO: Implement SectionLessonGuideView
-      // case SubPage.fullLesson:
-      //   return const Placeholder(); // TODO: Implement FullLessonView
-      // case SubPage.fullLessonGuide:
-      //   return const Placeholder(); // TODO: Implement FullLessonGuideView
-      // case SubPage.dev:
-      //   return const Placeholder(); // TODO: Implement DevView
-      // case SubPage.devNoteClassification:
-      //   return const Placeholder(); // TODO: Implement DevNoteClassificationView
-      // case SubPage.devCodeClassification:
-      //   return const Placeholder(); // TODO: Implement DevChordClassificationView
-      // case SubPage.devVoiceCommand:
-      //   return const Placeholder(); // TODO: Implement DevVoiceCommandView
-      // case SubPage.devConfig:
-      //   return const Placeholder(); // TODO: Implement DevConfigView
-      // case SubPage.devPermission:
-      //   return const Placeholder(); // TODO: Implement DevPermissionView
-      // case SubPage.devTextToSpeech:
-      //   return const Placeholder(); // TODO: Implement DevTextToSpeechView
-    }
+    return switch (subPage) {
+      SettingPage() => const Placeholder(child: Text("Setting View")),
+      CurriculumPage() => const CurriculumView(),
+      LessonPage(songInfo: final songInfo) => LessonView(songInfo: songInfo),
+      ChordPage(songInfo: final songInfo) => const Placeholder(
+        child: Text("Chord View"),
+      ),
+      // ChordLessonPage(chord: final chord, chords: final chords) =>
+      //   const Placeholder(child: Text("Chord Lesson View")),
+      ChordLessonGuidePage() => const Placeholder(
+        child: Text("Chord Lesson Guide View"),
+      ),
+      TechniqueLessonPage() => const Placeholder(
+        child: Text("Technique Lesson View"),
+      ),
+      TechniqueLessonGuidePage() => const Placeholder(
+        child: Text("Technique Lesson Guide View"),
+      ),
+      SectionLessonPage() => const Placeholder(
+        child: Text("Section Lesson View"),
+      ),
+      SectionLessonGuidePage() => const Placeholder(
+        child: Text("Section Lesson Guide View"),
+      ),
+      FullLessonPage(songInfo: final songInfo) => const Placeholder(
+        child: Text("Full Lesson View"),
+      ),
+      FullLessonGuidePage() => const Placeholder(
+        child: Text("Full Lesson Guide View"),
+      ),
+      DevPage() => const Placeholder(child: Text("Dev View")),
+      DevNoteClassificationPage() => const Placeholder(
+        child: Text("Dev Note Classification View"),
+      ),
+      DevCodeClassificationPage() => const Placeholder(
+        child: Text("Dev Code Classification View"),
+      ),
+      DevVoiceCommandPage() => const Placeholder(
+        child: Text("Dev Voice Command View"),
+      ),
+      DevConfigPage() => const Placeholder(child: Text("Dev Config View")),
+      DevPermissionPage() => const Placeholder(
+        child: Text("Dev Permission View"),
+      ),
+      DevTextToSpeechPage() => const Placeholder(
+        child: Text("Dev Text To Speech View"),
+      ),
+    };
   }
 }
 

@@ -19,13 +19,7 @@ class CurriculumItemCellView extends StatelessWidget {
       child: Container(
         height: 110,
         padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: Row(
-          children: [
-            _buildTitleSection(),
-            const Spacer(),
-            _buildChordSection(),
-          ],
-        ),
+        child: Row(children: [_buildTitleSection(), _buildChordSection()]),
       ),
     ).accessibility(
       label: "${songInfo.level} ${songInfo.title} 학습하기 버튼",
@@ -84,6 +78,6 @@ class CurriculumItemCellView extends StatelessWidget {
   }
 
   void _handleTap(AppRouter router) {
-    // router.push(SubPage.lesson(songInfo: songInfo));
+    router.push(LessonPage(songInfo: songInfo));
   }
 }

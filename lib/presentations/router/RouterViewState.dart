@@ -17,97 +17,113 @@ enum RootPage {
   }
 }
 
-class SubPage {
-  final SubPageType type;
-  final Map<String, dynamic> parameters;
+sealed class SubPage {
+  const SubPage();
 
-  const SubPage(this.type, [this.parameters = const {}]);
-
-  String get title => type.title;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SubPage &&
-          runtimeType == other.runtimeType &&
-          type == other.type &&
-          _mapEquals(parameters, other.parameters);
-
-  @override
-  int get hashCode => Object.hash(type, parameters);
-
-  bool _mapEquals(Map<String, dynamic> a, Map<String, dynamic> b) {
-    if (a.length != b.length) return false;
-    for (final key in a.keys) {
-      if (!b.containsKey(key) || a[key] != b[key]) return false;
-    }
-    return true;
+  String get title {
+    return switch (this) {
+      SettingPage() => "설정",
+      CurriculumPage() => "학습 목록",
+      LessonPage() => "레슨",
+      ChordPage() => "코드 학습",
+      // ChordLessonPage() => "코드 레슨",
+      ChordLessonGuidePage() => "코드 학습 도움말",
+      TechniqueLessonPage() => "주법 학습",
+      TechniqueLessonGuidePage() => "주법 학습 도움말",
+      SectionLessonPage() => "곡 구간 학습",
+      SectionLessonGuidePage() => "곡 구간 학습 도움말",
+      FullLessonPage() => "곡 전체 학습",
+      FullLessonGuidePage() => "곡 전체 학습 도움말",
+      DevPage() => "개발",
+      DevNoteClassificationPage() => "노트 분류",
+      DevCodeClassificationPage() => "코드 분류",
+      DevVoiceCommandPage() => "음성 명령",
+      DevConfigPage() => "설정",
+      DevPermissionPage() => "권한",
+      DevTextToSpeechPage() => "TTS",
+    };
   }
 }
 
-enum SubPageType {
-  setting,
-  curriculum,
-  lesson,
-  chord,
-  chordLesson,
-  chordLessonGuide,
-  techniqueLesson,
-  techniqueLessonGuide,
-  sectionLesson,
-  sectionLessonGuide,
-  fullLesson,
-  fullLessonGuide,
-  dev,
-  devNoteClassification,
-  devCodeClassification,
-  devVoiceCommand,
-  devConfig,
-  devPermission,
-  devTextToSpeech;
+class SettingPage extends SubPage {
+  const SettingPage();
+}
 
-  String get title {
-    switch (this) {
-      case SubPageType.setting:
-        return "설정";
-      case SubPageType.curriculum:
-        return "학습 목록";
-      case SubPageType.lesson:
-        return "레슨";
-      case SubPageType.chord:
-        return "코드 학습";
-      case SubPageType.chordLesson:
-        return "코드 레슨";
-      case SubPageType.chordLessonGuide:
-        return "코드 학습 도움말";
-      case SubPageType.techniqueLesson:
-        return "주법 학습";
-      case SubPageType.techniqueLessonGuide:
-        return "주법 학습 도움말";
-      case SubPageType.sectionLesson:
-        return "곡 구간 학습";
-      case SubPageType.sectionLessonGuide:
-        return "곡 구간 학습 도움말";
-      case SubPageType.fullLesson:
-        return "곡 전체 학습";
-      case SubPageType.fullLessonGuide:
-        return "곡 전체 학습 도움말";
-      case SubPageType.dev:
-        return "개발";
-      case SubPageType.devNoteClassification:
-        return "노트 분류";
-      case SubPageType.devCodeClassification:
-        return "코드 분류";
-      case SubPageType.devVoiceCommand:
-        return "음성 명령";
-      case SubPageType.devConfig:
-        return "설정";
-      case SubPageType.devPermission:
-        return "권한";
-      case SubPageType.devTextToSpeech:
-        return "TTS";
-    }
-  }
+class CurriculumPage extends SubPage {
+  const CurriculumPage();
+}
+
+class LessonPage extends SubPage {
+  final SongInfo songInfo;
+  const LessonPage({required this.songInfo});
+}
+
+class ChordPage extends SubPage {
+  final SongInfo songInfo;
+  const ChordPage({required this.songInfo});
+}
+
+// class ChordLessonPage extends SubPage {
+//   final Chord chord;
+//   final List<Chord> chords;
+//   const ChordLessonPage({required this.chord, required this.chords});
+// }
+
+class ChordLessonGuidePage extends SubPage {
+  const ChordLessonGuidePage();
+}
+
+class TechniqueLessonPage extends SubPage {
+  const TechniqueLessonPage();
+}
+
+class TechniqueLessonGuidePage extends SubPage {
+  const TechniqueLessonGuidePage();
+}
+
+class SectionLessonPage extends SubPage {
+  const SectionLessonPage();
+}
+
+class SectionLessonGuidePage extends SubPage {
+  const SectionLessonGuidePage();
+}
+
+class FullLessonPage extends SubPage {
+  final SongInfo songInfo;
+  const FullLessonPage({required this.songInfo});
+}
+
+class FullLessonGuidePage extends SubPage {
+  const FullLessonGuidePage();
+}
+
+class DevPage extends SubPage {
+  const DevPage();
+}
+
+class DevNoteClassificationPage extends SubPage {
+  const DevNoteClassificationPage();
+}
+
+class DevCodeClassificationPage extends SubPage {
+  const DevCodeClassificationPage();
+}
+
+class DevVoiceCommandPage extends SubPage {
+  const DevVoiceCommandPage();
+}
+
+class DevConfigPage extends SubPage {
+  const DevConfigPage();
+}
+
+class DevPermissionPage extends SubPage {
+  const DevPermissionPage();
+}
+
+class DevTextToSpeechPage extends SubPage {
+  const DevTextToSpeechPage();
 }
 
 class RouterViewState {

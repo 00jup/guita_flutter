@@ -20,13 +20,14 @@ class LessonView extends StatelessWidget {
     return BaseView<LessonViewState, LessonViewModel>(
       create: () => LessonViewModel(),
       builder: (viewModel, state) {
-        return Column(
-          children: [
-            _buildToolbar(),
-            const Spacer(),
-            _buildSongInfo(),
-            _buildLearningButtons(),
-          ],
+        return SafeArea(
+          child: Column(
+            children: [
+              _buildToolbar(),
+              _buildFixedSongSection(),
+              _buildLearningButtons(),
+            ],
+          ),
         );
       },
     );
@@ -40,8 +41,17 @@ class LessonView extends StatelessWidget {
     );
   }
 
+  Widget _buildFixedSongSection() {
+    return Container(
+      height: 180,
+      alignment: Alignment.center,
+      child: _buildSongInfo(),
+    );
+  }
+
   Widget _buildSongInfo() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildSongTitle(),
         const SizedBox(height: 6),
@@ -70,54 +80,50 @@ class LessonView extends StatelessWidget {
 
   Widget _buildLearningButtons() {
     return Expanded(
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final buttonHeight = constraints.maxHeight / 4;
-
-          return Column(
-            children: [
-              const ListDivider(),
-              _buildLearningButton(
-                title: "코드 학습",
-                height: buttonHeight,
-                onTap: () => _handleChordLearningTap(),
-              ),
-              const ListDivider(),
-              _buildLearningButton(
-                title: "주법 학습",
-                height: buttonHeight,
-                onTap: () => _handleTechniqueLearningTap(),
-              ),
-              const ListDivider(),
-              _buildLearningButton(
-                title: "곡 구간 학습",
-                height: buttonHeight,
-                onTap: () => _handleSectionLearningTap(),
-              ),
-              const ListDivider(),
-              _buildLearningButton(
-                title: "곡 전체 학습",
-                height: buttonHeight,
-                onTap: () => _handleFullLearningTap(),
-              ),
-              const ListDivider(),
-            ],
-          );
-        },
+      child: Column(
+        children: [
+          const ListDivider(),
+          Expanded(
+            child: _buildLearningButton(
+              title: "코드 학습",
+              onTap: () => _handleChordLearningTap(),
+            ),
+          ),
+          const ListDivider(),
+          Expanded(
+            child: _buildLearningButton(
+              title: "주법 학습",
+              onTap: () => _handleTechniqueLearningTap(),
+            ),
+          ),
+          const ListDivider(),
+          Expanded(
+            child: _buildLearningButton(
+              title: "곡 구간 학습",
+              onTap: () => _handleSectionLearningTap(),
+            ),
+          ),
+          const ListDivider(),
+          Expanded(
+            child: _buildLearningButton(
+              title: "곡 전체 학습",
+              onTap: () => _handleFullLearningTap(),
+            ),
+          ),
+          const ListDivider(),
+        ],
       ),
     );
   }
 
   Widget _buildLearningButton({
     required String title,
-    required double height,
     required VoidCallback onTap,
   }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        height: height,
         alignment: Alignment.center,
         child: Text(
           title,
@@ -136,22 +142,18 @@ class LessonView extends StatelessWidget {
   }
 
   void _handleChordLearningTap() {
-    // TODO: Router 연결 시 구현
     print("코드 학습 선택");
   }
 
   void _handleTechniqueLearningTap() {
-    // TODO: Router 연결 시 구현
     print("주법 학습 선택");
   }
 
   void _handleSectionLearningTap() {
-    // TODO: Router 연결 시 구현
     print("곡 구간 학습 선택");
   }
 
   void _handleFullLearningTap() {
-    // TODO: Router 연결 시 구현
     print("곡 전체 학습 선택");
   }
 }

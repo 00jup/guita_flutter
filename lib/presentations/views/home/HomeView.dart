@@ -30,7 +30,7 @@ class HomeView extends StatelessWidget {
                 accessibilityHint: "귀로 치는 기타, 귀타가 시작되었습니다",
                 isPopButton: false,
                 trailing: () => GestureDetector(
-                  onLongPress: () => router.push(SubPage.dev),
+                  onLongPress: () => router.push(const DevPage()),
                   child: const Text(
                     "Dev",
                     style: TextStyle(color: Colors.transparent, fontSize: 1),
@@ -53,7 +53,7 @@ class HomeView extends StatelessWidget {
                       const SizedBox(height: 40),
 
                       ElevatedButton(
-                        onPressed: () => router.push(SubPage.curriculum),
+                        onPressed: () => router.push(const CurriculumPage()),
                         child: Text(
                           '기타 학습',
                           style: TextStyle(
@@ -65,7 +65,7 @@ class HomeView extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       ElevatedButton(
-                        onPressed: () => router.push(SubPage.setting),
+                        onPressed: () => router.push(const SettingPage()),
                         child: Text(
                           '설정',
                           style: TextStyle(
