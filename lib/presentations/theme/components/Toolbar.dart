@@ -69,7 +69,7 @@ class _ToolbarState extends State<Toolbar> {
               if (widget.isPopButton)
                 IconButton(
                   icon: Image.asset(
-                    'assets/images/arrow-left.png',
+                    'assets/images/arrow-trailing.png',
                     color: Colors.white,
                     width: 24,
                     height: 24,

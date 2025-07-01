@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:guita_flutter/presentations/router/Router.dart';
 import 'package:guita_flutter/presentations/router/RouterViewState.dart';
+
 import 'package:guita_flutter/presentations/theme/components/shapes/Layout.dart';
 import 'package:guita_flutter/presentations/views/splash/SplashView.dart';
 import 'package:guita_flutter/presentations/views/home/HomeView.dart';
@@ -47,15 +49,16 @@ class RouterView extends StatelessWidget {
       case SubPage.setting:
         return const Placeholder(child: Text("Setting View"));
       case SubPage.curriculum:
-        return const Placeholder(child: Text("Curriculum View"));
+        return const CurriculumView();
+      // case SubPage.lesson(songInfo: final songInfo):
+      // return LessonView(songInfo: songInfo);
       default:
         return const Placeholder(child: Text("Coming Soon"));
       // case SubPage.setting:
       //   return const SettingView();
       // case SubPage.curriculum:
       //   return const CurriculumView();
-      // case SubPage.lesson:
-      //   return const Placeholder(); // TODO: Implement LessonView
+
       // case SubPage.chord:
       //   return const Placeholder(); // TODO: Implement ChordView
       // case SubPage.chordLesson:
