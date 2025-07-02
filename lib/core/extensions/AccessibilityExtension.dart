@@ -1,6 +1,5 @@
 // guita_flutter/core/extensions/AccessibilityExtension.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
 
 extension AccessibilityExtension on Widget {
   Widget accessibilityLabel(String label) {

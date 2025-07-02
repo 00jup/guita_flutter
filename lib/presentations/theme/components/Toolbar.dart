@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:guita_flutter/presentations/router/Router.dart';
 
-import 'package:guita_flutter/presentations/theme/fonts/FontKoddi.dart';
 import 'package:guita_flutter/core/extensions/AccessibilityExtension.dart';
 
 class Toolbar extends StatefulWidget {

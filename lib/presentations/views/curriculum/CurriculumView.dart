@@ -5,7 +5,6 @@ import 'package:guita_flutter/presentations/views/curriculum/CurriculumViewState
 import 'package:guita_flutter/presentations/views/curriculum/views/CurriculumItemCellView.dart';
 import 'package:guita_flutter/presentations/theme/components/Toolbar.dart';
 import 'package:guita_flutter/presentations/theme/components/shapes/ListDivider.dart';
-import 'package:guita_flutter/features/lesson/entities/SongInfo.dart';
 
 class CurriculumView extends StatelessWidget {
   const CurriculumView({super.key});

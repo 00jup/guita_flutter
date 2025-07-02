@@ -13,7 +13,6 @@ import 'package:guita_flutter/presentations/views/home/HomeView.dart';
 
 import 'package:guita_flutter/presentations/views/curriculum/CurriculumView.dart';
 import 'package:guita_flutter/presentations/views/lesson/LessonView.dart';
-import 'package:guita_flutter/presentations/views/setting/SettingView.dart';
 
 class RouterView extends StatelessWidget {
   const RouterView({super.key});

@@ -134,7 +134,7 @@ class LessonView extends StatelessWidget {
           ),
         ),
       ),
-    ).accessibility(label: "${title}하기", isButton: true);
+    ).accessibility(label: "$title하기", isButton: true);
   }
 
   String _getChordDescription() {
