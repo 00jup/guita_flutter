@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:guita_flutter/presentations/router/Router.dart';
-// IconButton은 Flutter 기본 위젯 사용
+
 import 'package:guita_flutter/presentations/theme/fonts/FontKoddi.dart';
 import 'package:guita_flutter/core/extensions/AccessibilityExtension.dart';
 
@@ -37,7 +37,6 @@ class _ToolbarState extends State<Toolbar> {
   @override
   void initState() {
     super.initState();
-    // 시작시 Title 포커싱하기 (잘 안됨)
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(const Duration(milliseconds: 100), () {
         if (mounted) {
@@ -77,7 +76,7 @@ class _ToolbarState extends State<Toolbar> {
                   onPressed: () => router.pop(),
                 ).accessibility(
                   label: "나가기",
-                  hint: "ExitButton.Desc를 $_previousTitle로 이동합니다",
+                  hint: "$_previousTitle로 이동합니다",
                   isButton: true,
                 )
               else if (widget.leading != null)

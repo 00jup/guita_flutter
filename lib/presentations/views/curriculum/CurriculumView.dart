@@ -1,4 +1,3 @@
-// guita_flutter/presentations/views/curriculum/CurriculumView.dart
 import 'package:flutter/material.dart';
 import 'package:guita_flutter/core/base/BaseView.dart';
 import 'package:guita_flutter/presentations/views/curriculum/CurriculumViewModel.dart';
@@ -60,8 +59,4 @@ class CurriculumView extends StatelessWidget {
     );
   }
 
-  void _handleItemTap(SongInfo songInfo) {
-    // 일단 비워둠 - 나중에 Router가 제대로 설정되면 사용
-    print("Tapped: ${songInfo.title}");
-  }
 }
