@@ -1,3 +1,5 @@
+// Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
+
 // guita_flutter/core/extensions/AccessibilityExtension.dart
 import 'package:flutter/material.dart';
 

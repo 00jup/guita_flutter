@@ -13,5 +13,4 @@ class BaseViewModel<TState> extends ChangeNotifier {
     _state = newState;
     notifyListeners();
   }
-
 }

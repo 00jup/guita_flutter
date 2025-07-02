@@ -1,3 +1,5 @@
+// Copyright © 2025 ADA 4th Challenge3 Team1. All rights reserved.
+
 import 'package:flutter/material.dart';
 import 'package:guita_flutter/core/base/BaseView.dart';
 import 'package:guita_flutter/presentations/views/curriculum/CurriculumViewModel.dart';
@@ -57,5 +59,4 @@ class CurriculumView extends StatelessWidget {
       ),
     );
   }
-
 }
